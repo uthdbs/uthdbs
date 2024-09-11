@@ -1,0 +1,836 @@
+/*  html 파일에서 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.2/reset.min.css"> 구문(61행)으로 초기화 자동으로 설정함  */
+
+/*
+body{
+    color: red;
+    font-size: 100px;
+    font-family: "Nanum Gothic", sans-serif;
+}
+*/
+
+/* common */
+body{
+    font-family: "Nanum Gothic" , sans-serif;
+    font-size: 16px;
+    font-weight: 400; /*두께*/
+    line-height: 1.4;
+    color: #333;
+
+
+    /* 임시로 높이 지정 (badges의 스크롤작업 위해서) */
+    /* height: 3000px; */
+}
+a{
+    text-decoration: none;
+}
+
+/* img (인라인요소) 하단에 Baseline 공백을 제거 */
+img{
+    display: block;
+}
+
+.inner{
+    width: 1100px;
+    margin: 0px auto;
+    position: relative;
+}
+
+/* BUTTON 모음 (공통) */
+.btn{
+    width: 130px;
+    padding: 10px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    color: #333;
+    font-size: 16px;
+    font-weight: 700;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    display: block;
+    transition: 0.4s;
+}
+.btn:hover{
+    background-color: #333;
+    color: #fff;
+}
+.btn.btn--reverse{
+    background-color: #333;
+    color: #fff;
+}
+.btn.btn--reverse:hover{
+    background-color: transparent; /*투명*/
+    color: #333;
+}
+.btn.btn--brown{
+    color: #592b18;
+    border-color: #592b18;
+}
+.btn.btn--brown:hover{
+    color: #fff;
+    background-color: #592b18;
+}
+
+.btn.btn--gold{
+    color: #d9aa8a;
+    border-color: #d9aa8a;
+}
+.btn.btn--gold:hover{
+    color: #fff;
+    border-color: #d9aa8a;
+}
+
+.btn.btn--white{
+    color: white;
+    border-color: white;
+}
+.btn.btn--white:hover{
+    color: #333;
+    background-color: rgba(255,255,255,0.8);
+}
+
+
+/* header (Base-line 설명) */
+/*
+header{
+    background-color: royalblue;
+}
+header .inner{
+    width: 1100px;
+    margin: 0px auto;
+    background-color: orange;
+}
+*/
+
+/* header */
+header{
+    width: 100%;
+
+    background-color: #def4ba;
+    border-bottom: 1px solid #b3bda5;
+
+    position: fixed;
+    top: 0px;
+
+    z-index: 6;
+}
+header > .inner{
+    /* width: 1100px; */
+    height: 120px;
+    /* margin: 0px auto; */
+    /* background-color: orange; */
+
+    /* position: relative; */
+}
+/* 
+    가로 세로 중앙 정렬 : top:0, bottom:0, left:0, right:0
+    .logo(가로 사이즈 값과 세로 사이즈 값 입력)
+*/
+header .logo{
+    height: 75px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    margin: auto;
+}
+
+header .sub-menu{
+    position: absolute;
+    top: 20px;
+    right: 0px;
+    display: flex;
+}
+header .sub-menu ul.menu{
+    font-family: Arial, sans-serif;
+    display: flex;
+}
+header .sub-menu ul.menu li{
+    position: relative;
+}
+header .sub-menu ul.menu li::before{
+    content: "";
+    display: block;
+    width: 1px;
+    height: 12px;
+    background-color: #000;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+}
+/* header .sub-menu ul.menu li:nth-of-type(1)::before{
+    width: 0px;
+} */
+header .sub-menu ul.menu li:first-child::before{
+    display: none;
+}
+header .sub-menu ul.menu li a{
+    padding: 11px 16px;
+    display: block;
+    font-size: 13px;
+    color: #656565;
+}
+header .sub-menu ul.menu li a:hover{
+    color: #000;
+}
+
+header .sub-menu .search{
+    /* background-color: red; */
+    position: relative;
+    height: 34px;
+}
+header .sub-menu .search input{
+    width: 36px;
+    height: inherit; /* 부모요소로부터 높이값 상속 */
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 5px;
+    outline: none;
+    background-color: white;
+    color: #777;
+    font-size: 12px;
+    transition: width 0.4s;
+}
+header .sub-menu .search input:focus{
+    width: 190px;
+    border-color: #669900;
+}
+header .sub-menu .search .material-symbols-outlined{
+    height: 24px;
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    right: 5px;
+    margin: auto;
+    transition: 0.4s;
+}
+header .sub-menu .search.focused .material-symbols-outlined{
+    opacity: 0;
+}
+
+/* main-menu */
+header .main-menu{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    display: flex;
+}
+header .main-menu .item .item__name{
+    padding: 15px 20px 24px 20px;
+    font-family: arial, sans-serif;
+    font-size: 13px;
+}
+header .main-menu .item:hover .item__name{
+    /* background-color: #0f6104; */
+    background-color: #03562d;
+    color: #c7d6a9;
+    border-radius: 6px 6px 0px 0px;
+}
+
+header .main-menu .item .item__contents{
+    width: 100%;
+    position: fixed;  /*전체 뷰포트 기준*/
+    left: 0px;
+    display: none;
+}
+header .main-menu .item:hover .item__contents{
+    display: block;
+}
+header .main-menu .item .item__contents .contents__menu{
+    /* background-color: red; */
+    /* height: 200px; */
+
+    /* background-color: #0f6104; */
+    background-color: #03562d;
+}
+header .main-menu .item .item__contents .contents__menu>ul{
+    padding: 20px 0;
+    display: flex;
+}
+header .main-menu .item .item__contents .contents__menu>ul>li{
+    width: 220px;
+}
+header .main-menu .item .item__contents .contents__menu>ul>li h4{
+    padding: 3px 0px 12px 0px;
+    font-size: 14px;
+    color: white;
+}
+header .main-menu .item .item__contents .contents__menu>ul>li ul li{
+    padding: 5px 0px;
+    font-size: 12px;
+    color: #adadad;
+    cursor: pointer;
+}
+header .main-menu .item .item__contents .contents__menu>ul>li ul li:hover{
+    color: #c7d6a9;
+}
+
+header .main-menu .item .item__contents .contents__texture{
+    /* background-color: orange; */
+    /* height: 100px; */
+
+    padding: 26px 0px;
+    font-size: 12px;
+    background-image: url(../images/forest5.jpg);
+}
+header .main-menu .item .item__contents .contents__texture h4{
+    color: #c8c8c8;
+    font-weight: 700;    
+}
+header .main-menu .item .item__contents .contents__texture p{
+    color: #c7d6a9;
+    margin: 4px 0 14px;    
+}
+
+
+
+
+/* BADGES */
+header .badges{
+    position: absolute;
+    top: 132px;
+    right: 12px;
+}
+header .badges .badge{
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    box-shadow: 5px 8px 6px rgba(0,0,0,0.4);
+    cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* figure (swiper 적용) */
+/* PROMOTION */
+figure{
+    position: relative;
+    top: 83px;
+}
+figure .promotion{
+    height: 733px;
+
+    background-color: #f6f5ef;
+    /* background-color: red; */
+    
+    position: relative;
+    overflow: hidden;
+    transition: 0.4;
+}
+
+figure .promotion .swiper{
+    /*
+        너비 819px 슬라이드 이미지 3개와 그 사이 여백 10px씩 주면 총너비 = 2477px (819 * 3 + 20px)
+    */
+
+    width: calc(1600px * 3 + 300px);
+    height: 733px;
+    position: absolute;
+    left: 52.5%;
+    margin-left: calc((1600px * 3 + 300px) / -2);
+}
+figure .promotion .swiper-slide{
+    position: relative;
+    opacity: 0;
+    transition: opacity 1s;
+}
+figure .promotion .swiper-slide-active{  /* html문서에 active 태그 안줘도 swiper기능 자체에서 active 항목이 숨겨져 설정돼있음*/
+    opacity: 1;
+}
+figure .z-index-3{
+    z-index: 3;
+}
+figure .promotion .z-index-3 .btn{
+    position: absolute;
+    bottom: 103px;
+    right: 170px;
+    z-index: 3;
+}
+figure .promotion .swiper-pagination{
+    bottom: 92px;
+    left: 0px;
+    right: 0px;
+    z-index: 3;
+}
+figure .promotion .swiper-pagination .swiper-pagination-bullet{
+    background-color: transparent;  /*투명*/
+    background-image: url(../images/promotion_slide_pager.png);
+    width: 13px;
+    height: 12px;
+    margin-right: 6px;
+    outline: none;
+}
+figure .promotion .swiper-pagination .swiper-pagination-bullet:last-child{
+    margin-right: 0px;    
+}
+figure .promotion .swiper-pagination .swiper-pagination-bullet-active{
+    background-image: url(../images/promotion_slide_pager_on.png);    
+}
+figure  .promotion .swiper-prev,
+figure  .promotion .swiper-next{
+    width: 42px;
+    height: 42px;
+    outline: none;  /*점선(선택박스처럼)이 생기는 것을 삭제해줌*/
+    border: 2px solid #333;
+    border-radius: 50%;
+    
+    position: absolute;
+    top: 350px;
+    z-index: 3;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:  0.4s;
+}
+figure .promotion .swiper-prev{
+    left: 50%;
+    margin-left: -890px;
+}
+figure .promotion .swiper-next{
+    right: 50%;
+    margin-right: -890px;
+}
+figure .promotion .swiper-prev:hover,
+figure .promotion .swiper-next:hover{
+    background-color: #333;
+    color: #fff;
+}
+
+/* 부유하는 요소 */
+figure .inner{
+    height: inherit; /*높이값 상속*/
+    width: inherit;
+    z-index: 1;
+}
+figure .floating1{
+    position: absolute;
+    top: 180px;
+    right: 165px;
+}
+figure .floating2{
+    position: absolute;
+    top: 150px;
+    left: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* NOTICE */
+/* NOTICE Line */
+.notice .notice-line{
+    position: relative;
+}
+.notice .notice-line .bg-left{
+    width: 50%;
+    height: 100%;
+    background-color: #444;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.notice .notice-line .bg-right{
+    width: 50%;
+    height: 100%;
+    background-color: #f6f5ed;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.notice .notice-line .inner{
+    height: 62px;
+    z-index: 1;
+    display: flex;
+}
+.notice .notice-line .inner .inner__left{
+    width: 60%;
+    height: 100%;
+    background-color: #444;
+    display: flex;
+    align-items: center;
+}
+.notice .notice-line .inner__left h2{
+    color:  #fff;
+    font-size: 17px;
+    font-weight: 700px;
+    margin-right: 20px;
+}
+.notice .notice-line .inner__left .swiper{
+    height: 62px;
+    flex-grow: 1;
+}
+.notice .notice-line  .inner__left .swiper .swiper-slide{
+    height: 62px;
+    display: flex;
+    align-items: center;
+}
+.notice .notice-line  .inner__left .swiper .swiper-slide a{
+    color: #fff;
+}
+.notice .notice-line .inner__left .notice-line__more{
+    width: 62px;
+    height: 62px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notice .notice-line .inner__left .notice-line__more .material-symbols-outlined{
+    color: #fff;
+    font-size: 30px;
+}
+.notice .notice-line .inner__right{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+.notice .notice-line .inner__right h2{
+    font-size: 17px;
+    font-weight: 700;
+}
+.notice .notice-line .inner__right .toggle-promotion{
+    width: 62px;
+    height: 62px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.notice .notice-line .inner__right .toggle--promotion .material-symbols-outlined{
+    font-size: 30px;
+}
+
+
+
+/* gallery */
+.notice .gallery{
+    height: 570px;
+
+    background-color: #f6f5ef;
+    /* background-color: red; */
+    
+    position: relative;
+    overflow: hidden;
+    transition: 0.4;
+}
+.notice .gallery.hide{
+    height: 0;
+}
+
+.notice .gallery .swiper1{
+    /*
+        너비 819px 슬라이드 이미지 3개와 그 사이 여백 10px씩 주면 총너비 = 2477px (819 * 3 + 20px)
+    */
+
+    width: calc(650px * 3 + 100px);
+    height: 553px;
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    margin-left: calc((650px * 3 + 60px) / -2);
+}
+.notice .gallery .swiper-slide{
+    position: relative;
+    opacity: 0.8;
+    transition: opacity 1s;
+}
+.notice .gallery .swiper-slide-active{  /* html문서에 active 태그 안줘도 swiper기능 자체에서 active 항목이 숨겨져 설정돼있음*/
+    opacity: 1;
+}
+.notice .gallery .swiper-slide .btn{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+}
+
+/*
+.notice .gallery .swiper-pagination{
+    bottom: 40px;
+    left: 0px;
+    right: 0px;
+    z-index: 0;
+}
+*/
+
+/* ▼ 페이지네이션 삭제해버려서 없어도 되는 내용 */
+.notice .gallery .swiper-pagination .swiper-pagination-bullet{
+    background-color: transparent;  /*투명*/
+    background-image: url(../images/promotion_slide_pager.png);
+    width: 13px;
+    height: 12px;
+    margin-right: 6px;
+    outline: none;
+}
+.notice .gallery .swiper-pagination .swiper-pagination-bullet:last-child{
+    margin-right: 0px;    
+}
+.notice .gallery .swiper-pagination .swiper-pagination-bullet-active{
+    background-image: url(../images/promotion_slide_pager_on.png);    
+}
+/* ▲ 페이지네이션 삭제해버려서 없어도 되는 내용 */
+
+
+.notice .gallery .swiper-prev,
+.notice .gallery .swiper-next{
+    width: 42px;
+    height: 42px;
+    outline: none;  /*점선(선택박스처럼)이 생기는 것을 삭제해줌*/
+    border: 2px solid #333;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.6);
+    
+    position: absolute;
+    top: 250px;
+    z-index: 1;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition:  0.4s;
+}
+.notice .gallery .swiper-prev{
+    left: 50%;
+    margin-left: -900px;
+}
+.notice .gallery .swiper-next{
+    right: 50%;
+    margin-right: -900px;
+}
+.notice .gallery .swiper-prev:hover,
+.notice .gallery .swiper-next:hover{
+    background-color: #333;
+    color: #fff;
+}
+
+
+
+/* 
+    scrollMagic
+
+    : 요소가 화면에 보여짐 여부에 따른 요소 관리
+*/
+.back-to-position{
+    opacity: 0;
+    transition: 1s;
+}
+.back-to-position.to-right{
+    transform: translateX(-150px);
+}
+.back-to-position.to-left{
+    transform: translateX(150px);
+}
+.show .back-to-position{
+    opacity: 1;
+    transform: translateX(0);
+}
+.show .back-to-position.delay-0{
+    transition-delay: 0s;
+}
+.show .back-to-position.delay-1{
+    transition-delay: 0.3s;
+}
+.show .back-to-position.delay-2{
+    transition-delay: 0.6s;
+}
+.show .back-to-position.delay-3{
+    transition-delay: 0.9s;
+}
+
+
+
+
+
+/* season product */
+.season-product{
+    background-image: url(../images/forest1.jpg);
+}
+.season-product .inner{
+    height: 500px;
+}
+.season-product .product{
+    position: absolute;
+    top: 0;
+    left: -500px;
+}
+.season-product .text-group{
+    position: absolute;
+    top: 80px;
+    right: -250px;
+}
+.season-product .text-group .title{
+    margin-bottom: 30px;
+}
+.season-product .text-group .description{
+    margin-bottom: 25px;
+}
+.season-product .text-group .btn{
+    margin-left: 19px;
+    background-color: rgba(222,222,222,0.7);
+}
+.season-product .text-group .btn:hover{
+    background-color: #333;
+    color: #fff;
+}
+
+
+
+
+
+/* footer */
+footer{
+    background-color: #272727;
+    border-top: 1px solid #ccc;
+}
+footer .inner{
+    padding: 40px 0 60px 0;
+}
+footer .menu{
+    display: flex;
+    justify-content: center;
+}
+footer .menu li{
+    position: relative;
+}
+footer .menu li::before{
+    content: "";
+    width: 3px;
+    height: 3px;
+    background-color: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+footer .menu li:first-child::before{
+    display: none;
+}
+footer .menu li a{
+    display: block;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 15px;
+}
+footer .menu li a.green{
+    color: #669900;
+}
+
+footer .btn-group{
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+footer .btn-group .btn{
+    font-size: 12px;
+    margin-right: 10px;
+}
+footer .btn-group .btn:last-child{
+    margin-right: 0;
+}
+footer .info{
+    margin-top: 30px;
+    text-align: center;
+}
+footer .info span{
+    margin-right: 20px;
+    color: #999;
+    font-size: 12px;
+}
+footer .info span:last-child{
+    margin-right: 0px;
+}
+footer .copyright{
+    color: #999;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 12px;
+}
+footer .logo{
+    margin: 30px auto;
+}
+
+/* to top button */
+#to-top{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 9;
+    width: 42px;
+    height: 42px;
+    background-color: rgba(79, 79, 79, 0.6);
+    color: #fff;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+
+
+/* 오시는 길 페이지 */
+.map{
+    margin-top: 120px;
+    padding: 60px 0px 80px;
+    /* background-image: url(../images/forest7.jpg); */
+    /* background-color: #0f6104; */
+    background-color: #086235;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+}
+.map h1{
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff;
+}
+.map .mapimg{
+    margin-top: 40px;
+    margin-left: 650px;
+    display: inline-block;
+}
+.map .maptext{
+    width: 33%;
+    margin: 30px auto;
+    /* margin-top: 20px;
+    margin-bottom: 50px; */
+    text-align: center;
+    border: 5px solid #fff;
+    border-radius: 55px;
+    padding-bottom: 20px;
+    color: #fff;
+}
+.map .maptext p{
+    line-height: 2;
+}
+.map .maptext p strong{
+    font-weight: bold;
+    font-size: 20px;
+    line-height: 4;
+}
